@@ -1,0 +1,17 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:reclamator="http://schemas.android.com/apk/res-auto"
+    tools:context="bruno.recla.EntryDescActivity">
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/edit"
+        android:title="@string/action_edit"
+        reclamator:showAsAction="ifRoom"
+    />
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/delete"
+        android:title="@string/action_delete"
+        reclamator:showAsAction="ifRoom"
+    />
+</menu>

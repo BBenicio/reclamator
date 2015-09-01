@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools"
+           xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"/>-->
+    
+    <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background" tools:ignore="NewApi">@color/ab_color</item>
+        <item name="background">@color/ab_color</item>
+    </style>
+
+    <style name="CustomListView" parent="android:Widget.ListView">
+        <item name="android:listSelector">@drawable/lv_highlight</item>
+        <item name="android:cacheColorHint">#00000000</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle" tools:ignore="NewApi">@style/CustomActionBar</item>
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+        <item name="android:listViewStyle">@style/CustomListView</item>
+    </style>
+
+</resources>

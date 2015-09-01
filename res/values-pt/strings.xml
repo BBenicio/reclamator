@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_delete">Excluir</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_settings">Configurações</string>
+    <string name="operator_hint">Atendente</string>
+    <string name="company_hint">Empresa</string>
+    <string name="delete_dialog_title">Excluir esta entrada?</string>
+    <string name="empty_field">Há um campo em branco</string>
+    <string name="entry_error">Não foi possível obter as informações da entrada</string>
+    <string name="new_button">Nova entrada</string>
+    <string name="no_button">Não</string>
+    <string name="observations_hint">Observações</string>
+    <string name="problem_hint">Problema</string>
+    <string name="protocol_hint">Protocolo</string>
+    <string name="save_button">Salvar</string>
+    <string name="time_hint">Data - Hora</string>
+    <string name="title_activity_entries">Entradas</string>
+    <string name="title_activity_entry_desc">Entrada</string>
+    <string name="title_activity_new">Nova Entrada</string>
+    <string name="title_activity_problems">Problemas</string>
+    <string name="yes_button">Sim</string>
+    <string name="cancel">Voltar sem salvar?</string>
+    <string name="search_action">Busca</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="ab_color">#a7ff69</color>-->
+    <color name="ab_color">#9b9bff</color>
+    <!--<color name="bg_color">#ffffcd</color>-->
+    <color name="bg_color">#fffff0</color>
+    <color name="text">#202020</color>
+    <color name="ac_color">#b4b4ff</color>
+    <color name="ac_color_tran">#bbb4b4ff</color>
+</resources>

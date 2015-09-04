@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_padding"
-    tools:context="bruno.recla.EntryDescActivity"
+    tools:context=".EntryDescActivity"
     android:background="@color/bg_color">
 
     <RelativeLayout
@@ -12,6 +12,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/company_hint"
+            android:textSize="14sp"
+            android:textColor="@color/text"
+            android:id="@+id/companyLabel"
+            android:paddingBottom="3dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingEnd="0dp"
             android:paddingRight="0dp"
@@ -20,21 +29,22 @@
             android:id="@+id/companyValue"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/companyLabel"
             android:gravity="end"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/company_hint"
+            android:text="@string/problem_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/companyLabel"
-            android:layout_toLeftOf="@+id/companyValue"
+            android:id="@+id/problemLabel"
+            android:layout_below="@+id/companyValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingEnd="0dp"
@@ -44,22 +54,23 @@
             android:id="@+id/problemValue"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/problemLabel"
             android:gravity="end"
             android:layout_below="@+id/companyValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/problem_hint"
+            android:text="@string/operator_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/problemLabel"
-            android:layout_below="@+id/companyLabel"
+            android:id="@+id/operatorLabel"
+            android:layout_below="@+id/problemValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingEnd="0dp"
@@ -69,22 +80,23 @@
             android:id="@+id/operatorValue"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/operatorLabel"
             android:gravity="end"
             android:layout_below="@+id/problemValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/operator_hint"
+            android:text="@string/protocol_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/operatorLabel"
-            android:layout_below="@+id/problemLabel"
+            android:id="@+id/protocolLabel"
+            android:layout_below="@+id/operatorValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingEnd="0dp"
@@ -94,22 +106,23 @@
             android:id="@+id/protocolValue"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/protocolLabel"
             android:gravity="end"
             android:layout_below="@+id/operatorValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/protocol_hint"
+            android:text="@string/observations_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/protocolLabel"
-            android:layout_below="@+id/operatorLabel"
+            android:id="@+id/observationsLabel"
+            android:layout_below="@+id/protocolValue"
             android:paddingBottom="3dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingEnd="0dp"
@@ -119,19 +132,11 @@
             android:id="@+id/observationsValue"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/observationsLabel"
             android:gravity="end"
             android:layout_below="@+id/protocolValue"
             android:paddingBottom="3dp" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/observations_hint"
-            android:textSize="14sp"
-            android:textColor="@color/text"
-            android:id="@+id/observationsLabel"
-            android:layout_below="@+id/protocolLabel"
-            android:paddingBottom="3dp" />
 
         <TextView
             android:layout_width="wrap_content"

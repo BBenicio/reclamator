@@ -23,7 +23,7 @@ public class DatabaseWriter {
         db = dbHelper.getWritableDatabase();
     }
 
-    public void insert(Entry entry) {
+    private ContentValues createContentValues(Entry entry) {
         ContentValues values = new ContentValues();
 
         values.put(Contract.Entry.COLUMN_NAME_COMPANY, entry.company);
@@ -33,12 +33,18 @@ public class DatabaseWriter {
         values.put(Contract.Entry.COLUMN_NAME_OBSERVATIONS, entry.observations);
         values.put(Contract.Entry.COLUMN_NAME_TIME, entry.getTime());
 
-        entry.setId(db.insert(Contract.Entry.TABLE_NAME, "null", values));
+        return values;
+    }
+
+    public void insert(Entry entry) {
+        entry.setId(db.insert(Contract.Entry.TABLE_NAME, "null", createContentValues(entry)));
     }
 
     public void update(Entry entry) {
-        delete(entry);
-        insert(entry);
+        String selection = Contract.Entry.COLUMN_NAME_TIME + "=?";
+        String[] selectionArgs = { String.valueOf(entry.getTime()) };
+
+        db.update(Contract.Entry.TABLE_NAME, createContentValues(entry), selection, selectionArgs);
     }
 
     public void delete(Entry entry) {

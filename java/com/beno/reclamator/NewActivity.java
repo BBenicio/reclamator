@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -49,6 +51,14 @@ public class NewActivity extends AppCompatActivity {
                 time = entry.getTime();
             }
         }
+
+        Button saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                save();
+            }
+        });
     }
 
     private void save() {
@@ -64,14 +74,14 @@ public class NewActivity extends AppCompatActivity {
         else {
             if (!edit) {
                 databaseWriter.insert(new Entry(company, problem, operator, protocol, observations));
-                MainActivity.reloadEntries();
                 databaseWriter.close();
+                MainActivity.reloadEntries();
                 close();
             } else {
                 Entry entry = new Entry(company, problem, operator, protocol, observations, time);
                 databaseWriter.update(entry);
-                MainActivity.reloadEntries();
                 databaseWriter.close();
+                MainActivity.reloadEntries();
                 Intent intent = new Intent();
                 intent.putExtra(EntryDescActivity.ENTRY_EXTRA, entry);
                 setResult(RESULT_OK, intent);
@@ -83,11 +93,11 @@ public class NewActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (!((EditText)findViewById(R.id.company)).getText().toString().isEmpty() ||
-            !((EditText)findViewById(R.id.problem)).getText().toString().isEmpty() ||
-            !((EditText)findViewById(R.id.operator)).getText().toString().isEmpty() ||
-            !((EditText)findViewById(R.id.protocol)).getText().toString().isEmpty() ||
-            !((EditText)findViewById(R.id.observations)).getText().toString().isEmpty()) {
+        if (!(((EditText)findViewById(R.id.company)).getText().toString().isEmpty() ||
+              ((EditText)findViewById(R.id.problem)).getText().toString().isEmpty() ||
+              ((EditText)findViewById(R.id.operator)).getText().toString().isEmpty() ||
+              ((EditText)findViewById(R.id.protocol)).getText().toString().isEmpty() ||
+              ((EditText)findViewById(R.id.observations)).getText().toString().isEmpty())) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.cancel);
@@ -121,11 +131,6 @@ public class NewActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.saveAction:
-                save();
-                break;
-        }
         return super.onOptionsItemSelected(item);
     }
 }

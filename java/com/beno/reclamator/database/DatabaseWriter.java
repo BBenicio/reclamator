@@ -37,7 +37,7 @@ public class DatabaseWriter {
     }
 
     public void insert(Entry entry) {
-        entry.setId(db.insert(Contract.Entry.TABLE_NAME, "null", createContentValues(entry)));
+        db.insert(Contract.Entry.TABLE_NAME, "null", createContentValues(entry));
     }
 
     public void update(Entry entry) {

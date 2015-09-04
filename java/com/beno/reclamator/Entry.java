@@ -7,8 +7,8 @@ import android.text.format.DateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+//Parcelable is implemented so the class can be passed between intents
 public class Entry implements Parcelable {
-    private long id;
     private long time;
     public String company;
     public String problem;
@@ -27,14 +27,24 @@ public class Entry implements Parcelable {
             time = GregorianCalendar.getInstance().getTimeInMillis();
         }
 
-        id = 0;
-
         this.company = company;
         this.problem = problem;
         this.operator = operator;
         this.protocol = protocol;
         this.observations = observations;
     }
+
+    public long getTime() {
+        return time;
+    }
+
+    @Override
+    public String toString() {
+        Date date = new Date(time);
+        return DateFormat.getDateFormat(MainActivity.context).format(date) + " - " + DateFormat.getTimeFormat(MainActivity.context).format(date);
+    }
+
+    // Parcelable methods
 
     public static final Creator<Entry> CREATOR = new Creator<Entry>() {
         @Override
@@ -47,24 +57,6 @@ public class Entry implements Parcelable {
             return new Entry[size];
         }
     };
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    @Override
-    public String toString() {
-        Date date = new Date(time);
-        return DateFormat.getDateFormat(MainActivity.context).format(date) + " - " + DateFormat.getTimeFormat(MainActivity.context).format(date);
-    }
 
     @Override
     public int describeContents() {

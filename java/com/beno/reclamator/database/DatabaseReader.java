@@ -47,11 +47,11 @@ public class DatabaseReader {
         ArrayList<String> selectionArgs = new ArrayList<>();
 
         if (company != null) {
-            selection += Contract.Entry.COLUMN_NAME_COMPANY + " = ?";
+            selection += Contract.Entry.COLUMN_NAME_COMPANY + " MATCH ?";
             selectionArgs.add("'" + company + "'");
         }
         if (problem != null) {
-            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " = ?";
+            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " MATCH ?";
             selectionArgs.add("'" + problem + "'");
         }
 

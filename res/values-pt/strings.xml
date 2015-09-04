@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="action_delete">Excluir</string>
     <string name="action_edit">Editar</string>
     <string name="action_settings">Configurações</string>
@@ -22,4 +23,6 @@
     <string name="yes_button">Sim</string>
     <string name="cancel">Voltar sem salvar?</string>
     <string name="search_action">Busca</string>
+    <string name="title_activity_search">Resultado da Busca</string>
+
 </resources>

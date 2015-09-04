@@ -24,8 +24,6 @@
     <string name="entry_error">Unable to get entry\'s information</string>
     <string name="cancel">Go back without saving?</string>
     <string name="search_action">Search</string>
-	<string name="title_activity_search">SearchActivity</string>
-
-	<string name="hello_world">Hello world!</string>
-
+	<string name="title_activity_search">Search Results</string>
+    
 </resources>

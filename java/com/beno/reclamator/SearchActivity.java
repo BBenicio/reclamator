@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.beno.reclamator.database.DatabaseHelper;
 import com.beno.reclamator.database.DatabaseReader;
@@ -30,9 +31,7 @@ public class SearchActivity extends AppCompatActivity {
 			String query = intent.getStringExtra(SearchManager.QUERY);
 			DatabaseReader databaseReader = new DatabaseReader(new DatabaseHelper(MainActivity.context));
 
-			Toast.makeText(this, "Searching...", Toast.LENGTH_LONG).show();
 			ArrayList<Entry> search = databaseReader.search(query);
-			Toast.makeText(this, "DONE!", Toast.LENGTH_SHORT).show();
 
 			for (Entry e : search) {
 				adapter.add(e);
@@ -43,6 +42,14 @@ public class SearchActivity extends AppCompatActivity {
 
 		ListView searchList = (ListView)findViewById(R.id.searchList);
 		searchList.setAdapter(adapter);
+		searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(view.getContext(), EntryDescActivity.class);
+				intent.putExtra(EntryDescActivity.ENTRY_EXTRA, adapter.getItem(position));
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override

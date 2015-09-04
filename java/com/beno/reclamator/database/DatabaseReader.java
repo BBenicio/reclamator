@@ -36,33 +36,26 @@ public class DatabaseReader {
         return query(null, null);
     }
 
-    public ArrayList<Entry> search(String query) throws IllegalArgumentException {
-        return search(query, 0, 0);
-    }
+    public ArrayList<Entry> search(String query) {
+        // SQL Like search is not working the way it should.
+        // So while FTS isn't implemented, this hack is gonna have to do it.
 
-    public ArrayList<Entry> search(String query, int offset, int limit) throws IllegalArgumentException {
-        if (limit < 0) {
-            throw new IllegalArgumentException("Argument 'limit' cannot be negative");
-        } else if (offset < 0) {
-            throw new IllegalArgumentException("Argument 'offset' cannot be negative");
+        ArrayList<Entry> entries = query();
+
+        query = query.toLowerCase();
+
+        for (Entry e : entries) {
+            Entry lowCaseEntry = new Entry(e.company.toLowerCase(), e.problem.toLowerCase(), e.operator.toLowerCase(),
+                                 e.protocol.toLowerCase(), e.observations.toLowerCase(), e.getTime());
+
+            if (!(lowCaseEntry.company.contains(query) || lowCaseEntry.problem.contains(query) ||
+                  lowCaseEntry.operator.contains(query) || lowCaseEntry.protocol.contains(query) ||
+                  lowCaseEntry.observations.contains(query))) {
+                entries.remove(e);
+            }
         }
 
-        final String SEARCH = " LIKE '%?%'";
-
-        String selection = Contract.Entry.COLUMN_NAME_COMPANY + SEARCH + " OR " +
-                           Contract.Entry.COLUMN_NAME_PROBLEM + SEARCH + " OR " +
-                           Contract.Entry.COLUMN_NAME_OPERATOR + SEARCH + " OR " +
-                           Contract.Entry.COLUMN_NAME_PROTOCOL + SEARCH + " OR " +
-                           Contract.Entry.COLUMN_NAME_OBSERVATIONS + SEARCH;
-
-        String[] selectionArgs = { query, query, query, query, query };
-
-        if (limit == 0)
-            return execute(selection, selectionArgs, null);
-        else {
-            return execute(selection, selectionArgs, offset + "," + limit);
-        }
-
+        return entries;
     }
 
     public ArrayList<Entry> query(String company, String problem) {
@@ -78,7 +71,7 @@ public class DatabaseReader {
             selectionArgs.add(problem);
         }
 
-        return execute(selection, (String[])selectionArgs.toArray(), null);
+        return execute(selection, selectionArgs.toArray(new String[selectionArgs.size()]), null);
     }
 
     private ArrayList<Entry> execute(String selection, String[] selectionArgs, String limit) {
@@ -89,6 +82,7 @@ public class DatabaseReader {
                                  Contract.Entry.COLUMN_NAME_TIME + " DESC";
 
         Cursor cursor;
+
         if (limit != null) {
             cursor = db.query(Contract.Entry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder, limit);
         } else {

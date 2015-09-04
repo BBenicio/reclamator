@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.newEntryAction:
                 Intent intent = new Intent(this, NewActivity.class);
                 startActivity(intent);
-                break;
+                return true;
             case R.id.searchAction:
                 onSearchRequested();
-                break;
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

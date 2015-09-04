@@ -12,11 +12,11 @@ public class DatabaseReader {
     private SQLiteDatabase db;
 
     private final String[] projection = { Contract.Entry.COLUMN_NAME_COMPANY,
-                                    Contract.Entry.COLUMN_NAME_PROBLEM,
-                                    Contract.Entry.COLUMN_NAME_OPERATOR,
-                                    Contract.Entry.COLUMN_NAME_PROTOCOL,
-                                    Contract.Entry.COLUMN_NAME_OBSERVATIONS,
-                                    Contract.Entry.COLUMN_NAME_TIME };
+                                          Contract.Entry.COLUMN_NAME_PROBLEM,
+                                          Contract.Entry.COLUMN_NAME_OPERATOR,
+                                          Contract.Entry.COLUMN_NAME_PROTOCOL,
+                                          Contract.Entry.COLUMN_NAME_OBSERVATIONS,
+                                          Contract.Entry.COLUMN_NAME_TIME };
 
     public DatabaseReader(DatabaseHelper helper) {
         dbHelper = helper;
@@ -37,25 +37,9 @@ public class DatabaseReader {
     }
 
     public ArrayList<Entry> search(String query) {
-        // SQL Like search is not working the way it should.
-        // So while FTS isn't implemented, this hack is gonna have to do it.
+        String selection = Contract.Entry.TABLE_NAME + " MATCH ?";
 
-        ArrayList<Entry> entries = query();
-
-        query = query.toLowerCase();
-
-        for (Entry e : entries) {
-            Entry lowCaseEntry = new Entry(e.company.toLowerCase(), e.problem.toLowerCase(), e.operator.toLowerCase(),
-                                 e.protocol.toLowerCase(), e.observations.toLowerCase(), e.getTime());
-
-            if (!(lowCaseEntry.company.contains(query) || lowCaseEntry.problem.contains(query) ||
-                  lowCaseEntry.operator.contains(query) || lowCaseEntry.protocol.contains(query) ||
-                  lowCaseEntry.observations.contains(query))) {
-                entries.remove(e);
-            }
-        }
-
-        return entries;
+        return execute(selection, new String[] { "'*" + query + "*'" }, null);
     }
 
     public ArrayList<Entry> query(String company, String problem) {
@@ -63,12 +47,12 @@ public class DatabaseReader {
         ArrayList<String> selectionArgs = new ArrayList<>();
 
         if (company != null) {
-            selection += Contract.Entry.COLUMN_NAME_COMPANY + " = '?'";
-            selectionArgs.add(company);
+            selection += Contract.Entry.COLUMN_NAME_COMPANY + " = ?";
+            selectionArgs.add("'" + company + "'");
         }
         if (problem != null) {
-            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " = '?'";
-            selectionArgs.add(problem);
+            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " = ?";
+            selectionArgs.add("'" + problem + "'");
         }
 
         return execute(selection, selectionArgs.toArray(new String[selectionArgs.size()]), null);

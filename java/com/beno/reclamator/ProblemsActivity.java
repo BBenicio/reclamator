@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class ProblemsActivity extends AppCompatActivity {
@@ -51,6 +52,13 @@ public class ProblemsActivity extends AppCompatActivity {
         for (Entry entry : MainActivity.entries) {
             if (entry.company.equals(selectedCompany) && adapter.getPosition(entry.problem) == -1)
                 adapter.add(entry.problem);
+        }
+
+        TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+        if (adapter.isEmpty()) {
+            emptyList.setText(R.string.empty_list);
+        } else {
+            emptyList.setText(null);
         }
     }
 

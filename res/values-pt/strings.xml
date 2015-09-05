@@ -24,5 +24,7 @@
     <string name="cancel">Voltar sem salvar?</string>
     <string name="search_action">Busca</string>
     <string name="title_activity_search">Resultado da Busca</string>
+    <string name="empty_list">Toque o ícone \'Nova Entrada\' para criar uma nova entrada</string>
+    <string name="no_search_results">A busca feita não retornou nenhum resultado</string>
 
 </resources>

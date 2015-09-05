@@ -39,7 +39,7 @@ public class DatabaseReader {
     public ArrayList<Entry> search(String query) {
         String selection = Contract.Entry.TABLE_NAME + " MATCH ?";
 
-        return execute(selection, new String[] { "'*" + query + "*'" }, null);
+        return execute(selection, new String[] { "'*" + query + "*'" });
     }
 
     public ArrayList<Entry> query(String company, String problem) {
@@ -55,23 +55,22 @@ public class DatabaseReader {
             selectionArgs.add("'" + problem + "'");
         }
 
-        return execute(selection, selectionArgs.toArray(new String[selectionArgs.size()]), null);
+        return execute(selection, selectionArgs.toArray(new String[selectionArgs.size()]));
     }
 
-    private ArrayList<Entry> execute(String selection, String[] selectionArgs, String limit) {
+    private ArrayList<Entry> execute(String selection, String[] selectionArgs) {
         ArrayList<Entry> entries = new ArrayList<>();
 
         final String sortOrder = Contract.Entry.COLUMN_NAME_COMPANY + "," +
                                  Contract.Entry.COLUMN_NAME_PROBLEM + "," +
                                  Contract.Entry.COLUMN_NAME_TIME + " DESC";
 
-        Cursor cursor;
+        Cursor cursor = db.query(Contract.Entry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
 
-        if (limit != null) {
-            cursor = db.query(Contract.Entry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder, limit);
-        } else {
-            cursor = db.query(Contract.Entry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+        if (cursor == null) {
+            return entries;
         }
+
         cursor.moveToFirst();
 
         for(int i = 0; i < cursor.getCount(); ++i) {

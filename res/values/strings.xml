@@ -25,5 +25,7 @@
     <string name="cancel">Go back without saving?</string>
     <string name="search_action">Search</string>
 	<string name="title_activity_search">Search Results</string>
-    
+    <string name="empty_list">Tap the \'New Entry\' icon to create a new entry</string>
+    <string name="no_search_results">The search performed didn\'t return any results</string>
+
 </resources>

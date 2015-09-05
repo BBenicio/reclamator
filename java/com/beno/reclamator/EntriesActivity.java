@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class EntriesActivity extends AppCompatActivity {
     public static final String SELECTED_COMPANY_EXTRA = "selectedCompany";
@@ -53,6 +54,13 @@ public class EntriesActivity extends AppCompatActivity {
         for (Entry entry : MainActivity.entries) {
             if (entry.company.equals(selectedCompany) && entry.problem.equals(selectedProblem))
                 adapter.add(entry);
+        }
+
+        TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+        if (adapter.isEmpty()) {
+            emptyList.setText(R.string.empty_list);
+        } else {
+            emptyList.setText(null);
         }
     }
 

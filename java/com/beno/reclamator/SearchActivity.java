@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.beno.reclamator.database.DatabaseHelper;
 import com.beno.reclamator.database.DatabaseReader;
@@ -51,6 +52,18 @@ public class SearchActivity extends AppCompatActivity {
 				startActivity(intent);
 			}
 		});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		TextView emptySearch = (TextView) findViewById(R.id.emptySearch);
+
+		if (adapter.isEmpty()) {
+			emptySearch.setText(R.string.no_search_results);
+		} else {
+			emptySearch.setText(null);
+		}
 	}
 
 	@Override

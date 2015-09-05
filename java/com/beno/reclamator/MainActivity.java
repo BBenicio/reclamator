@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.beno.reclamator.database.DatabaseHelper;
 import com.beno.reclamator.database.DatabaseReader;
@@ -66,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
         for (Entry entry : entries) {
             if (adapter.getPosition(entry.company) == -1)
                 adapter.add(entry.company);
+        }
+
+        TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+        if (adapter.isEmpty()) {
+            emptyList.setText(R.string.empty_list);
+        } else {
+            emptyList.setText(null);
         }
     }
 

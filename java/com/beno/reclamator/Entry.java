@@ -4,11 +4,24 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.DateFormat;
 
+import com.beno.reclamator.database.DatabaseHelper;
+import com.beno.reclamator.database.DatabaseReader;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 //Parcelable is implemented so the class can be passed between intents
 public class Entry implements Parcelable {
+    public static final ArrayList<Entry> entries = new ArrayList<>();
+
+    public static void reloadEntries() {
+        DatabaseReader reader = new DatabaseReader(new DatabaseHelper(MainActivity.context));
+        entries.clear();
+        entries.addAll(reader.query());
+        reader.close();
+    }
+
     private long time;
     public String company;
     public String problem;

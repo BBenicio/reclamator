@@ -53,7 +53,7 @@ public class ProblemsActivity extends AppCompatActivity {
         super.onResume();
         adapter.clear();
 
-        for (Entry entry : MainActivity.entries) {
+        for (Entry entry : Entry.entries) {
             if (entry.company.equals(selectedCompany) && adapter.getPosition(entry.problem) == -1)
                 adapter.add(entry.problem);
         }

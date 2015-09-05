@@ -66,7 +66,7 @@ public class EntriesActivity extends AppCompatActivity {
         super.onResume();
         adapter.clear();
 
-        for (Entry entry : MainActivity.entries) {
+        for (Entry entry : Entry.entries) {
             if (entry.company.equals(selectedCompany) && entry.problem.equals(selectedProblem))
                 adapter.add(entry);
         }

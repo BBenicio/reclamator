@@ -77,7 +77,7 @@ public class EntryDescActivity extends AppCompatActivity {
                         DatabaseWriter databaseWriter = new DatabaseWriter(new DatabaseHelper(context));
                         databaseWriter.delete(selected);
                         databaseWriter.close();
-                        MainActivity.reloadEntries();
+                        Entry.reloadEntries();
                         finish();
                     }
                 });

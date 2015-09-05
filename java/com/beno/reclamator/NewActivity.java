@@ -76,13 +76,13 @@ public class NewActivity extends AppCompatActivity {
             if (!edit) {
                 databaseWriter.insert(new Entry(company, problem, operator, protocol, observations));
                 databaseWriter.close();
-                MainActivity.reloadEntries();
+                Entry.reloadEntries();
                 close();
             } else {
                 Entry entry = new Entry(company, problem, operator, protocol, observations, time);
                 databaseWriter.update(entry);
                 databaseWriter.close();
-                MainActivity.reloadEntries();
+                Entry.reloadEntries();
                 Intent intent = new Intent();
                 intent.putExtra(EntryDescActivity.ENTRY_EXTRA, entry);
                 setResult(RESULT_OK, intent);

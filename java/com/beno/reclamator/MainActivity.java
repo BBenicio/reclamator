@@ -12,17 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.beno.reclamator.database.DatabaseHelper;
-import com.beno.reclamator.database.DatabaseReader;
-
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-    public static final ArrayList<Entry> entries = new ArrayList<>();
-
     ArrayAdapter<String> adapter;
-
-    private static DatabaseReader databaseReader;
 
     // Used in Entry#toString() for the localized time
     public static Context context;
@@ -35,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
 
         context = getBaseContext();
-
-        databaseReader = new DatabaseReader(new DatabaseHelper(this));
 
         ListView list = (ListView)findViewById(R.id.companyList);
         adapter = new ArrayAdapter<>(this, R.layout.basic_row);
@@ -55,16 +44,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        databaseReader.close();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        reloadEntries();
+        Entry.reloadEntries();
         adapter.clear();
 
-        for (Entry entry : entries) {
+        for (Entry entry : Entry.entries) {
             if (adapter.getPosition(entry.company) == -1)
                 adapter.add(entry.company);
         }
@@ -75,13 +63,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             emptyList.setText(null);
         }
-    }
-
-    public static void reloadEntries() {
-        databaseReader.open();
-        entries.clear();
-        entries.addAll(databaseReader.query());
-        databaseReader.close();
     }
 
     @Override

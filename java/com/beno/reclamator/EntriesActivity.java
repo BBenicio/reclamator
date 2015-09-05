@@ -13,8 +13,10 @@ import android.widget.ListView;
 public class EntriesActivity extends AppCompatActivity {
     public static final String SELECTED_COMPANY_EXTRA = "selectedCompany";
     public static final String SELECTED_PROBLEM_EXTRA = "selectedProblem";
+
     String selectedCompany;
     String selectedProblem;
+
     ArrayAdapter<Entry> adapter;
 
     @Override
@@ -32,6 +34,7 @@ public class EntriesActivity extends AppCompatActivity {
 
         ListView list = (ListView) findViewById(R.id.entryList);
         list.setAdapter(adapter);
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -46,6 +49,7 @@ public class EntriesActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.clear();
+
         for (Entry entry : MainActivity.entries) {
             if (entry.company.equals(selectedCompany) && entry.problem.equals(selectedProblem))
                 adapter.add(entry);
@@ -54,7 +58,6 @@ public class EntriesActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_entries, menu);
         return true;
     }
@@ -69,6 +72,7 @@ public class EntriesActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

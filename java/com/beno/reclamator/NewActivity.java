@@ -21,6 +21,7 @@ public class NewActivity extends AppCompatActivity {
 
     public static final String ENTRY_EXTRA = "entry";
 
+    // When the user clicks save, should we update an existing entry?
     private boolean edit = false;
     private long time = 0;
 
@@ -124,7 +125,6 @@ public class NewActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_new, menu);
         return true;
     }

@@ -17,9 +17,13 @@ import com.beno.reclamator.database.DatabaseReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayAdapter<String> adapter;
     public static final ArrayList<Entry> entries = new ArrayList<>();
+
+    ArrayAdapter<String> adapter;
+
     private static DatabaseReader databaseReader;
+
+    // Used in Entry#toString() for the localized time
     public static Context context;
 
     @Override
@@ -74,9 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
         return true;
     }
 

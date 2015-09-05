@@ -19,16 +19,18 @@ public class EntryDescActivity extends AppCompatActivity {
     public static final String ENTRY_EXTRA = "entry";
 
     private Entry selected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_desc);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null)
+        if (extras != null) {
             selected = extras.getParcelable(ENTRY_EXTRA);
-        else
+        } else {
             selected = null;
+        }
     }
 
     @Override
@@ -50,20 +52,13 @@ public class EntryDescActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_entry_desc, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        switch (id) {
+        switch (item.getItemId()) {
             case R.id.action_edit:
                 Intent intent = new Intent(this, NewActivity.class);
                 intent.putExtra(NewActivity.ENTRY_EXTRA, selected);
@@ -80,7 +75,6 @@ public class EntryDescActivity extends AppCompatActivity {
                         DatabaseWriter databaseWriter = new DatabaseWriter(new DatabaseHelper(context));
                         databaseWriter.delete(selected);
                         databaseWriter.close();
-                        ProblemsActivity.adapter.remove(selected.problem);
                         MainActivity.reloadEntries();
                         finish();
                     }
@@ -100,7 +94,9 @@ public class EntryDescActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK)
+        // When the entry gets edited, reload it
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             selected = data.getParcelableExtra(ENTRY_EXTRA);
+        }
     }
 }

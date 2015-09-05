@@ -12,9 +12,11 @@ import android.widget.ListView;
 
 
 public class ProblemsActivity extends AppCompatActivity {
-    static ArrayAdapter<String> adapter;
     public static final String SELECTED_COMPANY_EXTRA = "selectedCompany";
+
     String selectedCompany;
+
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,6 @@ public class ProblemsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_problems, menu);
         return true;
     }
@@ -68,6 +69,7 @@ public class ProblemsActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

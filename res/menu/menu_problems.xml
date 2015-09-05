@@ -2,6 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:reclamator="http://schemas.android.com/apk/res-auto"
     tools:context="bruno.recla.ProblemsActivity">
+
     <item
         android:id="@+id/newEntryAction"
         android:title="@string/new_button"

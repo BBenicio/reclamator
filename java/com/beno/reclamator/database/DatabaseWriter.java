@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.beno.reclamator.Entry;
 
 public class DatabaseWriter {
-    public DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
     private SQLiteDatabase db;
 
     public DatabaseWriter(DatabaseHelper helper) {
@@ -41,15 +41,15 @@ public class DatabaseWriter {
     }
 
     public void update(Entry entry) {
-        String selection = Contract.Entry.COLUMN_NAME_TIME + "=?";
-        String[] selectionArgs = { String.valueOf(entry.getTime()) };
+        String selection = Contract.Entry.COLUMN_NAME_TIME + "MATCH ?";
+        String[] selectionArgs = { "'" + String.valueOf(entry.getTime()) + "'" };
 
         db.update(Contract.Entry.TABLE_NAME, createContentValues(entry), selection, selectionArgs);
     }
 
     public void delete(Entry entry) {
-        String selection = Contract.Entry.COLUMN_NAME_TIME + "=?";
-        String[] selectionArgs = { String.valueOf(entry.getTime()) };
+        String selection = Contract.Entry.COLUMN_NAME_TIME + " MATCH ?";
+        String[] selectionArgs = { "'" + String.valueOf(entry.getTime()) + "'" };
 
         db.delete(Contract.Entry.TABLE_NAME, selection, selectionArgs);
     }

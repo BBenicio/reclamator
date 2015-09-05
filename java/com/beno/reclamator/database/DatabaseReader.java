@@ -8,7 +8,7 @@ import com.beno.reclamator.Entry;
 import java.util.ArrayList;
 
 public class DatabaseReader {
-    public DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
     private SQLiteDatabase db;
 
     private final String[] projection = { Contract.Entry.COLUMN_NAME_COMPANY,

@@ -28,6 +28,10 @@ public class ProblemsActivity extends AppCompatActivity {
         if (extras != null)
             selectedCompany = extras.getString(SELECTED_COMPANY_EXTRA);
 
+        setTitle(selectedCompany);
+        // This activity doesn't need a subtitle,
+        // so the ActionBar class is not necessary in this case
+
         adapter = new ArrayAdapter<>(this, R.layout.basic_row);
 
         ListView list = (ListView) findViewById(R.id.problemList);

@@ -29,6 +29,8 @@ public class EntryDescActivity extends AppCompatActivity {
         if (extras != null) {
             selected = extras.getParcelable(ENTRY_EXTRA);
         } else {
+            // Toast#makeText cannot be shouldn't be called here
+            // So selected gets set to null for the user to be warned
             selected = null;
         }
     }

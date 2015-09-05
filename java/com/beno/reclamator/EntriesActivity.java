@@ -2,6 +2,7 @@ package com.beno.reclamator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class EntriesActivity extends AppCompatActivity {
+    private static final String TAG = "EntriesActivity";
+
     public static final String SELECTED_COMPANY_EXTRA = "selectedCompany";
     public static final String SELECTED_PROBLEM_EXTRA = "selectedProblem";
 
@@ -18,6 +21,16 @@ public class EntriesActivity extends AppCompatActivity {
     String selectedProblem;
 
     ArrayAdapter<Entry> adapter;
+
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(selectedCompany);
+            actionBar.setSubtitle(selectedProblem);
+        } else {
+            setTitle(selectedProblem);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +44,8 @@ public class EntriesActivity extends AppCompatActivity {
             selectedCompany = extras.getString(SELECTED_COMPANY_EXTRA);
             selectedProblem = extras.getString(SELECTED_PROBLEM_EXTRA);
         }
+
+        setupActionBar();
 
         ListView list = (ListView) findViewById(R.id.entryList);
         list.setAdapter(adapter);

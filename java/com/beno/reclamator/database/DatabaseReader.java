@@ -8,7 +8,7 @@ import com.beno.reclamator.Entry;
 import java.util.ArrayList;
 
 public class DatabaseReader {
-    public DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
     private SQLiteDatabase db;
 
     private final String[] projection = { Contract.Entry.COLUMN_NAME_COMPANY,
@@ -47,11 +47,11 @@ public class DatabaseReader {
         ArrayList<String> selectionArgs = new ArrayList<>();
 
         if (company != null) {
-            selection += Contract.Entry.COLUMN_NAME_COMPANY + " = ?";
+            selection += Contract.Entry.COLUMN_NAME_COMPANY + " MATCH ?";
             selectionArgs.add("'" + company + "'");
         }
         if (problem != null) {
-            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " = ?";
+            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " MATCH ?";
             selectionArgs.add("'" + problem + "'");
         }
 

@@ -32,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
 			String query = intent.getStringExtra(SearchManager.QUERY);
 			DatabaseReader databaseReader = new DatabaseReader(new DatabaseHelper(MainActivity.context));
 
-			ArrayList<Entry> search = databaseReader.search(query);
+			ArrayList<Entry> search = databaseReader.searchEntries(query);
 
 			for (Entry e : search) {
 				adapter.add(e);

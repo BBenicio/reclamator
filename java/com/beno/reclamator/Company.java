@@ -1,5 +1,8 @@
 package com.beno.reclamator;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.beno.reclamator.database.DatabaseHelper;
 import com.beno.reclamator.database.DatabaseReader;
 
@@ -8,8 +11,28 @@ import java.util.ArrayList;
 /**
  * Created by Bruno on 08/09/2015.
  */
-public class Company {
+public class Company implements Parcelable {
 	public static ArrayList<Company> companies = new ArrayList<>();
+
+	protected Company(Parcel in) {
+		name = in.readString();
+		phoneNumber = in.readString();
+		email = in.readString();
+		address = in.readString();
+		website = in.readString();
+	}
+
+	public static final Creator<Company> CREATOR = new Creator<Company>() {
+		@Override
+		public Company createFromParcel(Parcel in) {
+			return new Company(in);
+		}
+
+		@Override
+		public Company[] newArray(int size) {
+			return new Company[size];
+		}
+	};
 
 	public static void reloadCompanies() {
 		DatabaseReader reader = new DatabaseReader(new DatabaseHelper(MainActivity.context));
@@ -32,5 +55,19 @@ public class Company {
 		this.email = email;
 		this.address = address;
 		this.website = website;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(name);
+		dest.writeString(phoneNumber);
+		dest.writeString(email);
+		dest.writeString(address);
+		dest.writeString(website);
 	}
 }

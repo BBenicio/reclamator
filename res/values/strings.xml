@@ -27,5 +27,10 @@
 	<string name="title_activity_search">Search Results</string>
     <string name="empty_list">Tap the \'New Entry\' icon to create a new entry</string>
     <string name="no_search_results">The search performed didn\'t return any results</string>
+    <string name="company_name_hint">Name</string>
+    <string name="company_phone_hint">Phone Number</string>
+    <string name="company_email_hint">Email</string>
+    <string name="company_address_hint">Address</string>
+    <string name="company_website_hint">Website</string>
 
 </resources>

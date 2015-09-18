@@ -81,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.searchAction:
                 onSearchRequested();
                 return true;
+            case R.id.seeCompaniesAction:
+                Intent intent1 = new Intent(this, RegisteredCompaniesActivity.class);
+                startActivity(intent1);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

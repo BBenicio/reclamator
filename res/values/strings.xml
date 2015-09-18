@@ -32,5 +32,9 @@
     <string name="company_email_hint">Email</string>
     <string name="company_address_hint">Address</string>
     <string name="company_website_hint">Website</string>
+	<string name="title_activity_registered_companies">Companies</string>
+	<string name="title_activity_company_desc">Company</string>
+    <string name="registered_companies">Registered Companies</string>
+    <string name="title_activity_register_company">Register Company</string>
 
 </resources>

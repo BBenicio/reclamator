@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	  xmlns:tools="http://schemas.android.com/tools"
+	  tools:context=".RegisteredCompaniesActivity">
+
+	<item
+		android:id="@+id/newCompanyAction"
+		android:title="@string/new_button"
+		android:icon="@drawable/add"
+		app:showAsAction="ifRoom" />
+
+</menu>

@@ -15,6 +15,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".SearchActivity" />
@@ -41,8 +42,22 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                       android:resource="@xml/searchable" />
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".RegisterCompanyActivity"
+            android:label="@string/title_activity_register_company" >
+        </activity>
+        <activity
+            android:name=".RegisteredCompaniesActivity"
+            android:label="@string/title_activity_registered_companies" >
+        </activity>
+        <activity
+            android:name=".CompanyDescActivity"
+            android:label="@string/title_activity_company_desc" >
         </activity>
     </application>
 

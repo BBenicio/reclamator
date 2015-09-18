@@ -41,6 +41,17 @@ public class Company implements Parcelable {
 		reader.close();
 	}
 
+	public static Company getFromName(String name) {
+
+		for (Company c : companies) {
+			if (c.name.equals(name)) {
+				return c;
+			}
+		}
+
+		return null;
+	}
+
 	public String name;
 	public String phoneNumber;
 	public String email;

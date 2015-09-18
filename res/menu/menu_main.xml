@@ -15,4 +15,8 @@
         android:icon="@drawable/search"
         reclamator:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/seeCompaniesAction"
+        android:title="@string/registered_companies" />
+
 </menu>

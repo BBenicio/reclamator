@@ -45,7 +45,7 @@ public class CompanyDescActivity extends AppCompatActivity {
 			((TextView)findViewById(R.id.addressValue)).setText(company.address);
 			((TextView)findViewById(R.id.websiteValue)).setText(company.website);
 		} else {
-			Toast.makeText(this, R.string.entry_error, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.company_error, Toast.LENGTH_SHORT).show();
 			finish();
 		}
 	}
@@ -68,7 +68,7 @@ public class CompanyDescActivity extends AppCompatActivity {
 				final Activity context = this;
 
 				AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(this);
-				deleteBuilder.setTitle(R.string.delete_dialog_title); //TODO change string
+				deleteBuilder.setTitle(R.string.delete_dialog_title);
 				deleteBuilder.setPositiveButton(R.string.yes_button, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {

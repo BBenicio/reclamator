@@ -13,8 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class EntriesActivity extends AppCompatActivity {
-    private static final String TAG = "EntriesActivity";
-
     public static final String SELECTED_COMPANY_EXTRA = "selectedCompany";
     public static final String SELECTED_PROBLEM_EXTRA = "selectedProblem";
 

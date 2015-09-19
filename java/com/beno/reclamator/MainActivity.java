@@ -15,7 +15,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
-    // Used in Entry#toString() for the localized time
+    // Used in Entry#toString() for the localized time,
+    // in Entry#reloadEntries(), and Company#reloadCompanies for the DatabaseHelper
     public static Context context;
 
     @Override

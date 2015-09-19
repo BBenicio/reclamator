@@ -79,7 +79,7 @@ public class ProblemsActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, NewActivity.class);
                 intent.putExtra(NewActivity.COMPANY_EXTRA, selectedCompany);
                 startActivity(intent);
-                break;
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

@@ -13,12 +13,12 @@ public class DatabaseReader {
     private SQLiteDatabase db;
 
     private final String[] entriesProjection = {
-            Contract.Entry.COLUMN_NAME_COMPANY,
-            Contract.Entry.COLUMN_NAME_PROBLEM,
-            Contract.Entry.COLUMN_NAME_OPERATOR,
-            Contract.Entry.COLUMN_NAME_PROTOCOL,
-            Contract.Entry.COLUMN_NAME_OBSERVATIONS,
-            Contract.Entry.COLUMN_NAME_TIME
+            Contract.Entry.COMPANY_COLUMN,
+            Contract.Entry.PROBLEM_COLUMN,
+            Contract.Entry.OPERATOR_COLUMN,
+            Contract.Entry.PROTOCOL_COLUMN,
+            Contract.Entry.OBSERVATIONS_COLUMN,
+            Contract.Entry.TIME_COLUMN
     };
 
     private final String[] companiesProjection = {
@@ -48,9 +48,8 @@ public class DatabaseReader {
     }
 
     public ArrayList<Entry> searchEntries(String query) {
-        String selection = Contract.Entry.TABLE_NAME + " MATCH ?";
-
-        return executeOnEntries(selection, new String[] { "'*" + query + "*'" });
+        return executeOnEntries(Contract.Entry.TABLE_NAME + " MATCH ?",
+                                new String[] { "'*" + query + "*'" });
     }
 
     public ArrayList<Entry> queryEntries(String company, String problem) {
@@ -58,11 +57,11 @@ public class DatabaseReader {
         ArrayList<String> selectionArgs = new ArrayList<>();
 
         if (company != null) {
-            selection += Contract.Entry.COLUMN_NAME_COMPANY + " MATCH ?";
+            selection += Contract.Entry.COMPANY_COLUMN + " MATCH ?";
             selectionArgs.add("'" + company + "'");
         }
         if (problem != null) {
-            selection += " AND " + Contract.Entry.COLUMN_NAME_PROBLEM + " MATCH ?";
+            selection += " AND " + Contract.Entry.PROBLEM_COLUMN + " MATCH ?";
             selectionArgs.add("'" + problem + "'");
         }
 
@@ -72,9 +71,9 @@ public class DatabaseReader {
     private ArrayList<Entry> executeOnEntries(String selection, String[] selectionArgs) {
         ArrayList<Entry> entries = new ArrayList<>();
 
-        final String sortOrder = Contract.Entry.COLUMN_NAME_COMPANY + "," +
-                                 Contract.Entry.COLUMN_NAME_PROBLEM + "," +
-                                 Contract.Entry.COLUMN_NAME_TIME + " DESC";
+        final String sortOrder = Contract.Entry.COMPANY_COLUMN + "," +
+                                 Contract.Entry.PROBLEM_COLUMN + "," +
+                                 Contract.Entry.TIME_COLUMN + " DESC";
 
         Cursor cursor = db.query(Contract.Entry.TABLE_NAME, entriesProjection, selection, selectionArgs,
                                  null, null, sortOrder);
@@ -87,12 +86,12 @@ public class DatabaseReader {
 
         for(int i = 0; i < cursor.getCount(); ++i) {
             entries.add(new Entry(
-                    cursor.getString(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_COMPANY)),
-                    cursor.getString(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_PROBLEM)),
-                    cursor.getString(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_OPERATOR)),
-                    cursor.getString(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_PROTOCOL)),
-                    cursor.getString(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_OBSERVATIONS)),
-                    cursor.getLong(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_TIME))));
+                    cursor.getString(cursor.getColumnIndex(Contract.Entry.COMPANY_COLUMN)),
+                    cursor.getString(cursor.getColumnIndex(Contract.Entry.PROBLEM_COLUMN)),
+                    cursor.getString(cursor.getColumnIndex(Contract.Entry.OPERATOR_COLUMN)),
+                    cursor.getString(cursor.getColumnIndex(Contract.Entry.PROTOCOL_COLUMN)),
+                    cursor.getString(cursor.getColumnIndex(Contract.Entry.OBSERVATIONS_COLUMN)),
+                    cursor.getLong(cursor.getColumnIndex(Contract.Entry.TIME_COLUMN))));
 
             cursor.moveToNext();
         }
@@ -102,7 +101,8 @@ public class DatabaseReader {
     }
 
     public ArrayList<Company> searchCompanies(String query) {
-        return executeOnCompanies(Contract.Company.TABLE_NAME + " MATCH ?", new String[] { query });
+        return executeOnCompanies(Contract.Company.TABLE_NAME + " MATCH ?",
+                                  new String[] { "'*" + query + "*'"});
     }
 
     public ArrayList<Company> queryCompanies() {
@@ -110,12 +110,13 @@ public class DatabaseReader {
     }
 
     public ArrayList<Company> queryCompanies(String name) {
-        return executeOnCompanies(Contract.Company.NAME_COLUMN + " MATCH ?", new String[] { name });
+        return executeOnCompanies(Contract.Company.NAME_COLUMN + " MATCH ?",
+                                  new String[] { "'" + name + "'"});
     }
 
     private ArrayList<Company> executeOnCompanies(String selection, String[] selectionArgs) {
-        Cursor cursor = db.query(Contract.Company.TABLE_NAME, companiesProjection, selection, selectionArgs,
-                                 null, null, Contract.Company.NAME_COLUMN + " DESC");
+        Cursor cursor = db.query(Contract.Company.TABLE_NAME, companiesProjection, selection,
+                                 selectionArgs, null, null, Contract.Company.NAME_COLUMN + " DESC");
 
         ArrayList<Company> companies = new ArrayList<>();
 

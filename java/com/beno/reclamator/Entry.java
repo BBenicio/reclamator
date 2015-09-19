@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-//Parcelable is implemented so the class can be passed between intents
 public class Entry implements Parcelable {
     public static final ArrayList<Entry> entries = new ArrayList<>();
 
@@ -54,15 +53,25 @@ public class Entry implements Parcelable {
     @Override
     public String toString() {
         Date date = new Date(time);
-        return DateFormat.getDateFormat(MainActivity.context).format(date) + " - " + DateFormat.getTimeFormat(MainActivity.context).format(date);
+        return DateFormat.getDateFormat(MainActivity.context).format(date) + " - " +
+               DateFormat.getTimeFormat(MainActivity.context).format(date);
     }
 
     // Parcelable methods
 
+    protected Entry(Parcel in) {
+        company = in.readString();
+        problem = in.readString();
+        operator = in.readString();
+        protocol = in.readString();
+        observations = in.readString();
+        time = in.readLong();
+    }
+
     public static final Creator<Entry> CREATOR = new Creator<Entry>() {
         @Override
         public Entry createFromParcel(Parcel source) {
-            return new Entry(source.readString(), source.readString(), source.readString(), source.readString(), source.readString(), source.readLong());
+            return new Entry(source);
         }
 
         @Override

@@ -49,10 +49,10 @@ public class NewActivity extends AppCompatActivity {
                 Entry entry = extras.getParcelable(ENTRY_EXTRA);
                 edit = true;
                 company.setText(entry.company);
-                ((EditText)findViewById(R.id.problem)).setText(entry.problem);
-                ((EditText)findViewById(R.id.operator)).setText(entry.operator);
-                ((EditText)findViewById(R.id.protocol)).setText(entry.protocol);
-                ((EditText)findViewById(R.id.observations)).setText(entry.observations);
+                setEditText(R.id.problem, entry.problem);
+                setEditText(R.id.operator, entry.operator);
+                setEditText(R.id.protocol, entry.protocol);
+                setEditText(R.id.observations, entry.observations);
                 time = entry.getTime();
             }
         }
@@ -79,6 +79,14 @@ public class NewActivity extends AppCompatActivity {
         for (Company c : Company.companies) {
             companyAdapter.add(c.name);
         }
+    }
+
+    private String getEditText(int id) {
+        return ((EditText)findViewById(id)).getText().toString();
+    }
+
+    private void setEditText(int id, String text) {
+        ((EditText)findViewById(id)).setText(text);
     }
 
     private void save() {
@@ -113,11 +121,9 @@ public class NewActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (((AutoCompleteTextView)findViewById(R.id.company)).getText().toString().isEmpty() &&
-            ((EditText)findViewById(R.id.problem)).getText().toString().isEmpty() &&
-            ((EditText)findViewById(R.id.operator)).getText().toString().isEmpty() &&
-            ((EditText)findViewById(R.id.protocol)).getText().toString().isEmpty() &&
-            ((EditText)findViewById(R.id.observations)).getText().toString().isEmpty()) {
+        if (getEditText(R.id.company).isEmpty() && getEditText(R.id.problem).isEmpty() &&
+            getEditText(R.id.operator).isEmpty() && getEditText(R.id.protocol).isEmpty() &&
+            getEditText(R.id.observations).isEmpty()) {
 
             super.onBackPressed();
         } else {
@@ -130,11 +136,7 @@ public class NewActivity extends AppCompatActivity {
                 }
             });
 
-            builder.setNegativeButton(R.string.no_button, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
-            });
+            builder.setNegativeButton(R.string.no_button, null);
             builder.show();
         }
     }

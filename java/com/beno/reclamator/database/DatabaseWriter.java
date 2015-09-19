@@ -27,12 +27,12 @@ public class DatabaseWriter {
     private ContentValues createContentValues(Entry entry) {
         ContentValues values = new ContentValues();
 
-        values.put(Contract.Entry.COLUMN_NAME_COMPANY, entry.company);
-        values.put(Contract.Entry.COLUMN_NAME_PROBLEM, entry.problem);
-        values.put(Contract.Entry.COLUMN_NAME_OPERATOR, entry.operator);
-        values.put(Contract.Entry.COLUMN_NAME_PROTOCOL, entry.protocol);
-        values.put(Contract.Entry.COLUMN_NAME_OBSERVATIONS, entry.observations);
-        values.put(Contract.Entry.COLUMN_NAME_TIME, entry.getTime());
+        values.put(Contract.Entry.COMPANY_COLUMN, entry.company);
+        values.put(Contract.Entry.PROBLEM_COLUMN, entry.problem);
+        values.put(Contract.Entry.OPERATOR_COLUMN, entry.operator);
+        values.put(Contract.Entry.PROTOCOL_COLUMN, entry.protocol);
+        values.put(Contract.Entry.OBSERVATIONS_COLUMN, entry.observations);
+        values.put(Contract.Entry.TIME_COLUMN, entry.getTime());
 
         return values;
     }
@@ -59,7 +59,7 @@ public class DatabaseWriter {
 
     public void update(Entry entry) {
         db.update(Contract.Entry.TABLE_NAME, createContentValues(entry),
-                Contract.Entry.COLUMN_NAME_TIME + " MATCH ?",
+                Contract.Entry.TIME_COLUMN + " MATCH ?",
                 new String[] { "'" + String.valueOf(entry.getTime()) + "'" });
     }
 
@@ -70,7 +70,7 @@ public class DatabaseWriter {
     }
 
     public void delete(Entry entry) {
-        db.delete(Contract.Entry.TABLE_NAME, Contract.Entry.COLUMN_NAME_TIME + " MATCH ?",
+        db.delete(Contract.Entry.TABLE_NAME, Contract.Entry.TIME_COLUMN + " MATCH ?",
                   new String[] { "'" + String.valueOf(entry.getTime()) + "'" });
     }
 

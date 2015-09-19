@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class RegisteredCompaniesActivity extends AppCompatActivity {
 	ArrayAdapter<String> names;
@@ -40,6 +41,13 @@ public class RegisteredCompaniesActivity extends AppCompatActivity {
 		names.clear();
 		for (Company c : Company.companies) {
 			names.add(c.name);
+		}
+
+		TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+		if (names.isEmpty()) {
+			emptyList.setText(R.string.empty_list);
+		} else {
+			emptyList.setText(null);
 		}
 	}
 

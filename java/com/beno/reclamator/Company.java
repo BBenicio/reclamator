@@ -8,31 +8,8 @@ import com.beno.reclamator.database.DatabaseReader;
 
 import java.util.ArrayList;
 
-/**
- * Created by Bruno on 08/09/2015.
- */
 public class Company implements Parcelable {
 	public static ArrayList<Company> companies = new ArrayList<>();
-
-	protected Company(Parcel in) {
-		name = in.readString();
-		phoneNumber = in.readString();
-		email = in.readString();
-		address = in.readString();
-		website = in.readString();
-	}
-
-	public static final Creator<Company> CREATOR = new Creator<Company>() {
-		@Override
-		public Company createFromParcel(Parcel in) {
-			return new Company(in);
-		}
-
-		@Override
-		public Company[] newArray(int size) {
-			return new Company[size];
-		}
-	};
 
 	public static void reloadCompanies() {
 		DatabaseReader reader = new DatabaseReader(new DatabaseHelper(MainActivity.context));
@@ -56,8 +33,6 @@ public class Company implements Parcelable {
 	public String address;
 	public String website;
 
-	public Company() { }
-
 	public Company(String name, String phoneNumber, String email, String address, String website) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -65,6 +40,28 @@ public class Company implements Parcelable {
 		this.address = address;
 		this.website = website;
 	}
+
+	// Parcelable methods
+
+	protected Company(Parcel in) {
+		name = in.readString();
+		phoneNumber = in.readString();
+		email = in.readString();
+		address = in.readString();
+		website = in.readString();
+	}
+
+	public static final Creator<Company> CREATOR = new Creator<Company>() {
+		@Override
+		public Company createFromParcel(Parcel in) {
+			return new Company(in);
+		}
+
+		@Override
+		public Company[] newArray(int size) {
+			return new Company[size];
+		}
+	};
 
 	@Override
 	public int describeContents() {

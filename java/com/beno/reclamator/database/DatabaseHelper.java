@@ -13,12 +13,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE VIRTUAL TABLE " + Contract.Entry.TABLE_NAME +  " USING fts3 (" +
-            Contract.Entry.COLUMN_NAME_COMPANY + "," +
-            Contract.Entry.COLUMN_NAME_PROBLEM + "," +
-            Contract.Entry.COLUMN_NAME_OPERATOR + "," +
-            Contract.Entry.COLUMN_NAME_PROTOCOL + "," +
-            Contract.Entry.COLUMN_NAME_OBSERVATIONS + "," +
-            Contract.Entry.COLUMN_NAME_TIME + ")";
+            Contract.Entry.COMPANY_COLUMN + "," +
+            Contract.Entry.PROBLEM_COLUMN + "," +
+            Contract.Entry.OPERATOR_COLUMN + "," +
+            Contract.Entry.PROTOCOL_COLUMN + "," +
+            Contract.Entry.OBSERVATIONS_COLUMN + "," +
+            Contract.Entry.TIME_COLUMN + ")";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + Contract.Entry.TABLE_NAME;
 

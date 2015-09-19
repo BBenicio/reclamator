@@ -8,12 +8,12 @@ public final class Contract {
     public static abstract class Entry implements BaseColumns {
         public static final String TABLE_NAME = "entries";
 
-        public static final String COLUMN_NAME_COMPANY      = "company";
-        public static final String COLUMN_NAME_PROBLEM      = "problem";
-        public static final String COLUMN_NAME_OPERATOR     = "operator";
-        public static final String COLUMN_NAME_PROTOCOL     = "protocol";
-        public static final String COLUMN_NAME_OBSERVATIONS = "observations";
-        public static final String COLUMN_NAME_TIME         = "time";
+        public static final String COMPANY_COLUMN      = "company";
+        public static final String PROBLEM_COLUMN      = "problem";
+        public static final String OPERATOR_COLUMN     = "operator";
+        public static final String PROTOCOL_COLUMN     = "protocol";
+        public static final String OBSERVATIONS_COLUMN = "observations";
+        public static final String TIME_COLUMN         = "time";
     }
 
     public static abstract class Company implements BaseColumns {

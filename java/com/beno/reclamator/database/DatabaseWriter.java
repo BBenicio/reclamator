@@ -3,6 +3,7 @@ package com.beno.reclamator.database;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.beno.reclamator.Company;
 import com.beno.reclamator.Entry;
 
 public class DatabaseWriter {
@@ -36,21 +37,45 @@ public class DatabaseWriter {
         return values;
     }
 
+    private ContentValues createContentValues(Company company) {
+        ContentValues values = new ContentValues();
+
+        values.put(Contract.Company.NAME_COLUMN, company.name);
+        values.put(Contract.Company.PHONE_COLUMN, company.phoneNumber);
+        values.put(Contract.Company.EMAIL_COLUMN, company.email);
+        values.put(Contract.Company.ADDRESS_COLUMN, company.address);
+        values.put(Contract.Company.WEBSITE_COLUMN, company.website);
+
+        return values;
+    }
+
     public void insert(Entry entry) {
         db.insert(Contract.Entry.TABLE_NAME, "null", createContentValues(entry));
     }
 
-    public void update(Entry entry) {
-        String selection = Contract.Entry.COLUMN_NAME_TIME + "MATCH ?";
-        String[] selectionArgs = { "'" + String.valueOf(entry.getTime()) + "'" };
+    public void insert(Company company) {
+        db.insert(Contract.Company.TABLE_NAME, "null", createContentValues(company));
+    }
 
-        db.update(Contract.Entry.TABLE_NAME, createContentValues(entry), selection, selectionArgs);
+    public void update(Entry entry) {
+        db.update(Contract.Entry.TABLE_NAME, createContentValues(entry),
+                Contract.Entry.COLUMN_NAME_TIME + " MATCH ?",
+                new String[] { "'" + String.valueOf(entry.getTime()) + "'" });
+    }
+
+    public void update(Company company) {
+        db.update(Contract.Company.TABLE_NAME, createContentValues(company),
+                  Contract.Company.NAME_COLUMN + " MATCH ?",
+                  new String[] { "'" + company.name + "'" });
     }
 
     public void delete(Entry entry) {
-        String selection = Contract.Entry.COLUMN_NAME_TIME + " MATCH ?";
-        String[] selectionArgs = { "'" + String.valueOf(entry.getTime()) + "'" };
+        db.delete(Contract.Entry.TABLE_NAME, Contract.Entry.COLUMN_NAME_TIME + " MATCH ?",
+                  new String[] { "'" + String.valueOf(entry.getTime()) + "'" });
+    }
 
-        db.delete(Contract.Entry.TABLE_NAME, selection, selectionArgs);
+    public void delete(Company company) {
+        db.delete(Contract.Company.TABLE_NAME, Contract.Company.NAME_COLUMN + " MATCH ?",
+                  new String[] { "'" + company.name + "'" });
     }
 }

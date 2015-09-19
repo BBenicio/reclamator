@@ -26,5 +26,15 @@
     <string name="title_activity_search">Resultado da Busca</string>
     <string name="empty_list">Toque o ícone \'Nova Entrada\' para criar uma nova entrada</string>
     <string name="no_search_results">A busca feita não retornou nenhum resultado</string>
+    <string name="company_address_hint">Endereço</string>
+    <string name="company_email_hint">Email</string>
+    <string name="company_name_hint">Nome</string>
+    <string name="company_phone_hint">Telefone</string>
+    <string name="company_website_hint">Website</string>
+    <string name="title_activity_company_desc">Empresa</string>
+    <string name="title_activity_registered_companies">Empresas</string>
+    <string name="registered_companies">Empresas Cadastradas</string>
+    <string name="title_activity_register_company">Cadastrar Empresa</string>
+    <string name="name_already_registered">O nome da empresa já está cadastrado</string>
 
 </resources>

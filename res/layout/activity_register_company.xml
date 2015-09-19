@@ -1,0 +1,78 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:padding="@dimen/activity_padding"
+				tools:context=".RegisterCompanyActivity"
+			    android:background="@color/bg_color">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/name"
+			android:hint="@string/company_name_hint"
+			android:textSize="14sp"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"/>
+
+		<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/phone"
+			android:hint="@string/company_phone_hint"
+			android:textSize="14sp"
+			android:layout_below="@+id/name"
+			android:layout_marginTop="10dp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:inputType="phone"/>
+
+		<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/email"
+			android:hint="@string/company_email_hint"
+			android:textSize="14sp"
+			android:layout_below="@+id/phone"
+			android:layout_marginTop="10dp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:inputType="textEmailAddress"/>
+
+		<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/address"
+			android:hint="@string/company_address_hint"
+			android:textSize="14sp"
+			android:layout_below="@+id/email"
+			android:layout_marginTop="10dp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"/>
+
+		<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/website"
+			android:hint="@string/company_website_hint"
+			android:textSize="14sp"
+			android:layout_below="@+id/address"
+			android:layout_marginTop="10dp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/save_button"
+			android:id="@+id/saveButton"
+			android:layout_below="@+id/website"
+			android:layout_marginTop="10dp" />
+
+	</RelativeLayout>
+</ScrollView>

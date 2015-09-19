@@ -1,0 +1,150 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			android:paddingLeft="@dimen/activity_horizontal_margin"
+			android:paddingRight="@dimen/activity_horizontal_margin"
+			android:paddingTop="@dimen/activity_vertical_margin"
+			android:paddingBottom="@dimen/activity_vertical_margin"
+			tools:context=".CompanyDescActivity"
+	        android:background="@color/bg_color">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/company_name_hint"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/nameLabel"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="15dp"
+			android:paddingEnd="0dp"
+			android:paddingRight="0dp"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/nameValue"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+			android:layout_toRightOf="@+id/nameLabel"
+			android:gravity="end"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/company_phone_hint"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/phoneLabel"
+			android:layout_below="@+id/nameValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="15dp"
+			android:paddingEnd="0dp"
+			android:paddingRight="0dp"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/phoneValue"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+			android:layout_toRightOf="@+id/phoneLabel"
+			android:gravity="end"
+			android:layout_below="@+id/nameValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/company_email_hint"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/emailLabel"
+			android:layout_below="@+id/phoneValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="15dp"
+			android:paddingEnd="0dp"
+			android:paddingRight="0dp"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:autoLink="all"
+			android:linksClickable="true"
+			android:id="@+id/emailValue"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+			android:layout_toRightOf="@id/emailLabel"
+			android:gravity="end"
+			android:layout_below="@+id/phoneValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/company_address_hint"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/addressLabel"
+			android:layout_below="@+id/emailValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="15dp"
+			android:paddingEnd="0dp"
+			android:paddingRight="0dp"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/addressValue"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+			android:layout_toRightOf="@id/addressLabel"
+			android:gravity="end"
+			android:layout_below="@+id/emailValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/company_website_hint"
+			android:textSize="14sp"
+			android:textColor="@color/text"
+			android:id="@+id/websiteLabel"
+			android:layout_below="@+id/addressValue"
+			android:paddingBottom="3dp" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="15dp"
+			android:paddingEnd="0dp"
+			android:paddingRight="0dp"
+			android:textSize="14sp"
+			android:autoLink="all"
+			android:linksClickable="true"
+			android:id="@+id/websiteValue"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+			android:layout_toRightOf="@id/websiteLabel"
+			android:gravity="end"
+			android:layout_below="@+id/addressValue"
+			android:paddingBottom="3dp" />
+
+	</RelativeLayout>
+
+</ScrollView>

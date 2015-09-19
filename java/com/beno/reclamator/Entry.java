@@ -18,7 +18,7 @@ public class Entry implements Parcelable {
     public static void reloadEntries() {
         DatabaseReader reader = new DatabaseReader(new DatabaseHelper(MainActivity.context));
         entries.clear();
-        entries.addAll(reader.query());
+        entries.addAll(reader.queryEntries());
         reader.close();
     }
 

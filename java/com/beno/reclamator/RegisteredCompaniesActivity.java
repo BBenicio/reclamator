@@ -21,7 +21,7 @@ public class RegisteredCompaniesActivity extends AppCompatActivity {
 
 		names = new ArrayAdapter<>(this, R.layout.basic_row);
 
-		ListView list = (ListView)findViewById(R.id.companyList);
+		ListView list = (ListView)findViewById(R.id.company_list);
 		list.setAdapter(names);
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -43,7 +43,7 @@ public class RegisteredCompaniesActivity extends AppCompatActivity {
 			names.add(c.name);
 		}
 
-		TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+		TextView emptyList = (TextView)findViewById(R.id.empty_list_text);
 		if (names.isEmpty()) {
 			emptyList.setText(R.string.empty_list);
 		} else {
@@ -60,7 +60,8 @@ public class RegisteredCompaniesActivity extends AppCompatActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
-		if (item.getItemId() == R.id.newCompanyAction) {
+		switch (item.getItemId()) {
+		case R.id.new_company_action:
 			Intent intent = new Intent(this, RegisterCompanyActivity.class);
 			startActivity(intent);
 			return true;

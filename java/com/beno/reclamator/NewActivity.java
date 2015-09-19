@@ -63,7 +63,7 @@ public class NewActivity extends AppCompatActivity {
         company.setThreshold(1);
         company.setAdapter(companyAdapter);
 
-        Button saveButton = (Button) findViewById(R.id.saveButton);
+        Button saveButton = (Button) findViewById(R.id.save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

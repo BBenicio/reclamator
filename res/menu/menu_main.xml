@@ -4,19 +4,19 @@
       tools:context=".MainActivity">
 
     <item
-        android:id="@+id/newEntryAction"
+        android:id="@+id/new_entry_action"
         android:title="@string/new_button"
         android:icon="@drawable/add"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/searchAction"
+        android:id="@+id/search_action"
         android:title="@string/search_action"
         android:icon="@drawable/search"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/seeCompaniesAction"
+        android:id="@+id/see_companies_action"
         android:title="@string/registered_companies"/>
 
 </menu>

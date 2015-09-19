@@ -46,7 +46,7 @@ public class EntriesActivity extends AppCompatActivity {
 
         setupActionBar();
 
-        ListView list = (ListView) findViewById(R.id.entryList);
+        ListView list = (ListView) findViewById(R.id.entry_list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,7 +69,7 @@ public class EntriesActivity extends AppCompatActivity {
                 adapter.add(entry);
         }
 
-        TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+        TextView emptyList = (TextView)findViewById(R.id.empty_list_text);
         if (adapter.isEmpty()) {
             emptyList.setText(R.string.empty_list);
         } else {
@@ -86,7 +86,7 @@ public class EntriesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.newEntryAction:
+            case R.id.new_entry_action:
                 Intent intent = new Intent(this, NewActivity.class);
                 intent.putExtra(NewActivity.COMPANY_EXTRA, selectedCompany);
                 intent.putExtra(NewActivity.PROBLEM_EXTRA, selectedProblem);

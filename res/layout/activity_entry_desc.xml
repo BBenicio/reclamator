@@ -16,7 +16,7 @@
             android:text="@string/company_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/companyLabel"
+            android:id="@+id/company_label"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -27,11 +27,11 @@
             android:paddingRight="0dp"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/companyValue"
+            android:id="@+id/company_value"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/companyLabel"
-            android:layout_toEndOf="@+id/companyLabel"
+            android:layout_toRightOf="@+id/company_label"
+            android:layout_toEndOf="@+id/company_label"
             android:gravity="end"
             android:paddingBottom="3dp" />
 
@@ -41,8 +41,8 @@
             android:text="@string/problem_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/problemLabel"
-            android:layout_below="@+id/companyValue"
+            android:id="@+id/problem_label"
+            android:layout_below="@+id/company_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -53,13 +53,13 @@
             android:paddingRight="0dp"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/problemValue"
+            android:id="@+id/problem_value"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/problemLabel"
-            android:layout_toEndOf="@id/problemLabel"
+            android:layout_toRightOf="@+id/problem_label"
+            android:layout_toEndOf="@id/problem_label"
             android:gravity="end"
-            android:layout_below="@+id/companyValue"
+            android:layout_below="@+id/company_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -68,8 +68,8 @@
             android:text="@string/operator_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/operatorLabel"
-            android:layout_below="@+id/problemValue"
+            android:id="@+id/operator_label"
+            android:layout_below="@+id/problem_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -80,13 +80,13 @@
             android:paddingRight="0dp"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/operatorValue"
+            android:id="@+id/operator_value"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@id/operatorLabel"
-            android:layout_toEndOf="@id/operatorLabel"
+            android:layout_toRightOf="@+id/operator_label"
+            android:layout_toEndOf="@+id/operator_label"
             android:gravity="end"
-            android:layout_below="@+id/problemValue"
+            android:layout_below="@+id/problem_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -95,8 +95,8 @@
             android:text="@string/protocol_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/protocolLabel"
-            android:layout_below="@+id/operatorValue"
+            android:id="@+id/protocol_label"
+            android:layout_below="@+id/operator_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -107,13 +107,13 @@
             android:paddingRight="0dp"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/protocolValue"
+            android:id="@+id/protocol_value"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@id/protocolLabel"
-            android:layout_toEndOf="@+id/protocolLabel"
+            android:layout_toRightOf="@id/protocol_label"
+            android:layout_toEndOf="@+id/protocol_label"
             android:gravity="end"
-            android:layout_below="@+id/operatorValue"
+            android:layout_below="@+id/operator_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -122,8 +122,8 @@
             android:text="@string/observations_hint"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/observationsLabel"
-            android:layout_below="@+id/protocolValue"
+            android:id="@+id/observations_label"
+            android:layout_below="@+id/protocol_value"
             android:paddingBottom="3dp" />
 
         <TextView
@@ -134,13 +134,13 @@
             android:paddingRight="0dp"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/observationsValue"
+            android:id="@+id/observations_value"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@id/observationsLabel"
-            android:layout_toEndOf="@id/operatorLabel"
+            android:layout_toRightOf="@+id/observations_label"
+            android:layout_toEndOf="@+id/operator_label"
             android:gravity="end"
-            android:layout_below="@+id/protocolValue"
+            android:layout_below="@+id/protocol_value"
             android:paddingBottom="3dp" />
 
 
@@ -152,11 +152,11 @@
             android:paddingRight="0dp"
             android:textSize="14sp"
             android:textColor="@color/text"
-            android:id="@+id/timeValue"
+            android:id="@+id/time_value"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:gravity="end"
-            android:layout_below="@+id/observationsValue"/>
+            android:layout_below="@+id/observations_value"/>
 
     </RelativeLayout>
 

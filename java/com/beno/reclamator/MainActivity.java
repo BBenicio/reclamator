@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         context = getBaseContext();
 
-        ListView list = (ListView)findViewById(R.id.companyList);
+        ListView list = (ListView)findViewById(R.id.company_list);
         adapter = new ArrayAdapter<>(this, R.layout.basic_row);
         list.setAdapter(adapter);
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 adapter.add(entry.company);
         }
 
-        TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+        TextView emptyList = (TextView)findViewById(R.id.empty_list_text);
         if (adapter.isEmpty()) {
             emptyList.setText(R.string.empty_list);
         } else {
@@ -75,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.newEntryAction:
+            case R.id.new_entry_action:
                 Intent intent = new Intent(this, NewActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.searchAction:
+            case R.id.search_action:
                 onSearchRequested();
                 return true;
-            case R.id.seeCompaniesAction:
+            case R.id.see_companies_action:
                 Intent intent1 = new Intent(this, RegisteredCompaniesActivity.class);
                 startActivity(intent1);
                 return true;

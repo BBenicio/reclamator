@@ -40,12 +40,12 @@ public class EntryDescActivity extends AppCompatActivity {
         super.onResume();
 
         if (selected != null) {
-            ((TextView) findViewById(R.id.companyValue)).setText(selected.company);
-            ((TextView) findViewById(R.id.problemValue)).setText(selected.problem);
-            ((TextView) findViewById(R.id.operatorValue)).setText(selected.operator);
-            ((TextView) findViewById(R.id.protocolValue)).setText(selected.protocol);
-            ((TextView) findViewById(R.id.observationsValue)).setText(selected.observations);
-            ((TextView) findViewById(R.id.timeValue)).setText(selected.toString());
+            ((TextView) findViewById(R.id.company_value)).setText(selected.company);
+            ((TextView) findViewById(R.id.problem_value)).setText(selected.problem);
+            ((TextView) findViewById(R.id.operator_value)).setText(selected.operator);
+            ((TextView) findViewById(R.id.protocol_value)).setText(selected.protocol);
+            ((TextView) findViewById(R.id.observations_value)).setText(selected.observations);
+            ((TextView) findViewById(R.id.time_value)).setText(selected.toString());
         } else {
             Toast.makeText(this, R.string.entry_error, Toast.LENGTH_SHORT).show();
             finish();
@@ -61,12 +61,12 @@ public class EntryDescActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_edit:
+            case R.id.edit_action:
                 Intent intent = new Intent(this, NewActivity.class);
                 intent.putExtra(NewActivity.ENTRY_EXTRA, selected);
                 startActivityForResult(intent, 1);
                 return true;
-            case R.id.action_delete:
+            case R.id.delete_action:
                 final Activity context = this;
 
                 AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(this);

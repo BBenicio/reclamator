@@ -30,7 +30,7 @@ public class RegisterCompanyActivity extends AppCompatActivity {
 			edit = extras.getParcelable(EDIT_EXTRA);
 		}
 
-		Button saveButton = (Button) findViewById(R.id.saveButton);
+		Button saveButton = (Button) findViewById(R.id.save_button);
 		saveButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {

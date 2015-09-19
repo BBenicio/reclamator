@@ -39,11 +39,11 @@ public class CompanyDescActivity extends AppCompatActivity {
 		Company.reloadCompanies();
 
 		if (company != null) {
-			((TextView)findViewById(R.id.nameValue)).setText(company.name);
-			((TextView)findViewById(R.id.phoneValue)).setText(company.phoneNumber);
-			((TextView)findViewById(R.id.emailValue)).setText(company.email);
-			((TextView)findViewById(R.id.addressValue)).setText(company.address);
-			((TextView)findViewById(R.id.websiteValue)).setText(company.website);
+			((TextView)findViewById(R.id.name_value)).setText(company.name);
+			((TextView)findViewById(R.id.phone_value)).setText(company.phoneNumber);
+			((TextView)findViewById(R.id.email_value)).setText(company.email);
+			((TextView)findViewById(R.id.address_value)).setText(company.address);
+			((TextView)findViewById(R.id.website_value)).setText(company.website);
 		} else {
 			Toast.makeText(this, R.string.company_error, Toast.LENGTH_SHORT).show();
 			finish();
@@ -59,12 +59,12 @@ public class CompanyDescActivity extends AppCompatActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.action_edit:
+			case R.id.edit_action:
 				Intent intent = new Intent(this, RegisterCompanyActivity.class);
 				intent.putExtra(RegisterCompanyActivity.EDIT_EXTRA, company);
 				startActivityForResult(intent, 1);
 				return true;
-			case R.id.action_delete:
+			case R.id.delete_action:
 				final Activity context = this;
 
 				AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(this);

@@ -34,7 +34,7 @@ public class ProblemsActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, R.layout.basic_row);
 
-        ListView list = (ListView) findViewById(R.id.problemList);
+        ListView list = (ListView) findViewById(R.id.problem_list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,7 +58,7 @@ public class ProblemsActivity extends AppCompatActivity {
                 adapter.add(entry.problem);
         }
 
-        TextView emptyList = (TextView)findViewById(R.id.emptyListText);
+        TextView emptyList = (TextView)findViewById(R.id.empty_list_text);
         if (adapter.isEmpty()) {
             emptyList.setText(R.string.empty_list);
         } else {
@@ -75,7 +75,7 @@ public class ProblemsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.newEntryAction:
+            case R.id.new_entry_action:
                 Intent intent = new Intent(this, NewActivity.class);
                 intent.putExtra(NewActivity.COMPANY_EXTRA, selectedCompany);
                 startActivity(intent);

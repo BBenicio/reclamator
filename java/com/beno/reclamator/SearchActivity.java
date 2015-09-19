@@ -41,7 +41,7 @@ public class SearchActivity extends AppCompatActivity {
 			databaseReader.close();
 		}
 
-		ListView searchList = (ListView)findViewById(R.id.searchList);
+		ListView searchList = (ListView)findViewById(R.id.search_list);
 		searchList.setAdapter(adapter);
 
 		searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,7 +57,7 @@ public class SearchActivity extends AppCompatActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		TextView emptySearch = (TextView) findViewById(R.id.emptySearch);
+		TextView emptySearch = (TextView) findViewById(R.id.empty_search);
 
 		if (adapter.isEmpty()) {
 			emptySearch.setText(R.string.no_search_results);

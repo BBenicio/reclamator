@@ -65,8 +65,8 @@ public class DatabaseWriter {
 
     public void update(Company company) {
         db.update(Contract.Company.TABLE_NAME, createContentValues(company),
-                  Contract.Company.TABLE_NAME + " MATCH ?",
-                  new String[] { "'" + Contract.Company.NAME_COLUMN + "'" });
+                  Contract.Company.NAME_COLUMN + " MATCH ?",
+                  new String[] { "'" + company.name + "'" });
     }
 
     public void delete(Entry entry) {

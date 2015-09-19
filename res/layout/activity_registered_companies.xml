@@ -3,8 +3,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:padding="@dimen/activity_padding"
-				tools:context=".RegisteredCompaniesActivity"
-				android:background="@color/bg_color">
+				android:background="@color/bg_color"
+				tools:context=".RegisteredCompaniesActivity">
 
 	<TextView
 		android:layout_width="match_parent"
@@ -15,7 +15,6 @@
 	<ListView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:id="@+id/companyList"
-		android:layout_centerHorizontal="true" />
+		android:id="@+id/companyList" />
 
 </RelativeLayout>

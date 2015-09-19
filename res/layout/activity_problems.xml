@@ -1,9 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/activity_padding"
-    tools:context=".ProblemsActivity"
-    android:background="@color/bg_color">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/activity_padding"
+                android:background="@color/bg_color"
+                tools:context=".ProblemsActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -14,7 +15,6 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/problemList"
-        android:layout_centerHorizontal="true"/>
+        android:id="@+id/problemList" />
 
 </RelativeLayout>

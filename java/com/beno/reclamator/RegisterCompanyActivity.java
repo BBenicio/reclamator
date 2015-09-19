@@ -1,5 +1,7 @@
 package com.beno.reclamator;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.beno.reclamator.database.DatabaseHelper;
 import com.beno.reclamator.database.DatabaseWriter;
@@ -57,10 +60,16 @@ public class RegisterCompanyActivity extends AppCompatActivity {
 	}
 
 	private void save() {
+		if (getEditText(R.id.name).isEmpty()) {
+			Toast.makeText(this, R.string.empty_field, Toast.LENGTH_SHORT).show();
+			return;
+		}
+
 		Company company = new Company(getEditText(R.id.name), getEditText(R.id.phone), getEditText(R.id.email),
 				                      getEditText(R.id.address), getEditText(R.id.website));
 
-		if (!company.website.startsWith("http://") && !company.website.startsWith("https://")) {
+		if (!company.website.isEmpty() && !company.website.startsWith("http://") &&
+			!company.website.startsWith("https://")) {
 			company.website = "http://" + company.website;
 		}
 
@@ -71,12 +80,41 @@ public class RegisterCompanyActivity extends AppCompatActivity {
 			Intent intent = new Intent();
 			intent.putExtra(CompanyDescActivity.COMPANY_EXTRA, company);
 			setResult(RESULT_OK, intent);
-		} else {
+		} else if (Company.getFromName(company.name) == null) {
 			writer.insert(company);
 			writer.close();
+		} else {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.name_already_registered);
+			builder.setNeutralButton("Ok", null);
+			builder.show();
+			return;
 		}
+
 		Company.reloadCompanies();
 		finish();
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (getEditText(R.id.name).isEmpty() && getEditText(R.id.phone).isEmpty() &&
+			getEditText(R.id.email).isEmpty() && getEditText(R.id.address).isEmpty() &&
+			getEditText(R.id.website).isEmpty()) {
+
+			super.onBackPressed();
+		} else {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.cancel);
+			builder.setPositiveButton(R.string.yes_button, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+
+			builder.setNegativeButton(R.string.no_button, null);
+			builder.show();
+		}
 	}
 
 	@Override

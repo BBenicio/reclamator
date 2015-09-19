@@ -36,5 +36,6 @@
 	<string name="title_activity_company_desc">Company</string>
     <string name="registered_companies">Registered Companies</string>
     <string name="title_activity_register_company">Register Company</string>
+    <string name="name_already_registered">The company name is already registered</string>
 
 </resources>

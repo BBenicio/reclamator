@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +26,8 @@ public class NewActivity extends AppCompatActivity {
     // When the user clicks save, should we update an existing entry?
     private boolean edit = false;
     private long time = 0;
+
+    private ArrayAdapter<String> companyAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,12 @@ public class NewActivity extends AppCompatActivity {
             }
         }
 
+        companyAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
+
+        AutoCompleteTextView company = (AutoCompleteTextView)findViewById(R.id.company);
+        company.setThreshold(1);
+        company.setAdapter(companyAdapter);
+
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,9 +72,18 @@ public class NewActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Company.reloadCompanies();
+        for (Company c : Company.companies) {
+            companyAdapter.add(c.name);
+        }
+    }
+
     private void save() {
         DatabaseWriter databaseWriter = new DatabaseWriter(new DatabaseHelper(this));
-        String company = ((EditText) findViewById(R.id.company)).getText().toString();
+        String company = ((AutoCompleteTextView) findViewById(R.id.company)).getText().toString();
         String problem = ((EditText) findViewById(R.id.problem)).getText().toString();
         String operator = ((EditText) findViewById(R.id.operator)).getText().toString();
         String protocol = ((EditText) findViewById(R.id.protocol)).getText().toString();
@@ -94,12 +113,14 @@ public class NewActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (!(((EditText)findViewById(R.id.company)).getText().toString().isEmpty() ||
-              ((EditText)findViewById(R.id.problem)).getText().toString().isEmpty() ||
-              ((EditText)findViewById(R.id.operator)).getText().toString().isEmpty() ||
-              ((EditText)findViewById(R.id.protocol)).getText().toString().isEmpty() ||
-              ((EditText)findViewById(R.id.observations)).getText().toString().isEmpty())) {
+        if (((AutoCompleteTextView)findViewById(R.id.company)).getText().toString().isEmpty() &&
+            ((EditText)findViewById(R.id.problem)).getText().toString().isEmpty() &&
+            ((EditText)findViewById(R.id.operator)).getText().toString().isEmpty() &&
+            ((EditText)findViewById(R.id.protocol)).getText().toString().isEmpty() &&
+            ((EditText)findViewById(R.id.observations)).getText().toString().isEmpty()) {
 
+            super.onBackPressed();
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.cancel);
             builder.setPositiveButton(R.string.yes_button, new DialogInterface.OnClickListener() {
@@ -115,8 +136,7 @@ public class NewActivity extends AppCompatActivity {
                 }
             });
             builder.show();
-        } else
-            super.onBackPressed();
+        }
     }
 
     private void close() {

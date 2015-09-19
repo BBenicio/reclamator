@@ -35,5 +35,6 @@
     <string name="title_activity_registered_companies">Empresas</string>
     <string name="registered_companies">Empresas Cadastradas</string>
     <string name="title_activity_register_company">Cadastrar Empresa</string>
+    <string name="name_already_registered">O nome da empresa já está cadastrado</string>
 
 </resources>

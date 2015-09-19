@@ -131,6 +131,8 @@ public class DatabaseReader {
                     cursor.getString(cursor.getColumnIndex(Contract.Company.EMAIL_COLUMN)),
                     cursor.getString(cursor.getColumnIndex(Contract.Company.ADDRESS_COLUMN)),
                     cursor.getString(cursor.getColumnIndex(Contract.Company.WEBSITE_COLUMN))));
+
+            cursor.moveToNext();
         }
 
         cursor.close();

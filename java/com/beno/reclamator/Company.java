@@ -42,13 +42,11 @@ public class Company implements Parcelable {
 	}
 
 	public static Company getFromName(String name) {
-
 		for (Company c : companies) {
-			if (c.name.equals(name)) {
+			if (c.name.toLowerCase().equals(name.toLowerCase())) {
 				return c;
 			}
 		}
-
 		return null;
 	}
 

@@ -82,10 +82,7 @@ public class EntryDescActivity extends AppCompatActivity {
                     }
                 });
 
-                deleteBuilder.setNegativeButton(R.string.no_button, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {}
-                });
+                deleteBuilder.setNegativeButton(R.string.no_button, null);
 
                 deleteBuilder.show();
                 return true;

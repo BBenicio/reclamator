@@ -86,6 +86,11 @@ public class EntryDescActivity extends AppCompatActivity {
 
                 deleteBuilder.show();
                 return true;
+            case R.id.company_info_action:
+                Intent intent1 = new Intent(this, CompanyDescActivity.class);
+                intent1.putExtra(CompanyDescActivity.COMPANY_EXTRA, Company.getFromName(selected.company));
+                startActivity(intent1);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

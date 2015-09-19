@@ -38,5 +38,6 @@
     <string name="title_activity_register_company">Register Company</string>
     <string name="name_already_registered">The company name is already registered</string>
     <string name="company_error">Unable to get company\'s information</string>
+    <string name="company_info">Company info</string>
 
 </resources>
